@@ -131,14 +131,17 @@ class MagicGrid {
     let { cols, wSpace } = this.setup();
     let maxHeight = 0;
     let colWidth = this.colWidth();
+    console.log(wSpace)
 
-    wSpace = this.center ? Math.floor(wSpace / 2) : 0;
-
+    // wSpace = this.center ? Math.floor(wSpace / 2) : 0;
+    // console.log(wSpace)
     for (let i = 0; i < this.items.length; i++) {
       let col = this.nextCol(cols, i);
       let item = this.items[i];
-      let topGutter = col.height ? this.gutter : 0;
-      let left = col.index * colWidth + wSpace + "px";
+      let topGutter = col.height ? this.gutter*2 : 0;
+
+      let left = col.index * colWidth + this.gutter*col.index + "px";
+
       let top = col.height + topGutter + "px";
 
       if(this.useTransform){

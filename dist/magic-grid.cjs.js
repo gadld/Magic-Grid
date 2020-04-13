@@ -186,14 +186,17 @@ MagicGrid.prototype.positionItems = function positionItems () {
     var wSpace = ref.wSpace;
   var maxHeight = 0;
   var colWidth = this.colWidth();
+  console.log(wSpace);
 
-  wSpace = this.center ? Math.floor(wSpace / 2) : 0;
-
+  // wSpace = this.center ? Math.floor(wSpace / 2) : 0;
+  // console.log(wSpace)
   for (var i = 0; i < this.items.length; i++) {
     var col = this.nextCol(cols, i);
     var item = this.items[i];
-    var topGutter = col.height ? this.gutter : 0;
-    var left = col.index * colWidth + wSpace + "px";
+    var topGutter = col.height ? this.gutter*2 : 0;
+
+    var left = col.index * colWidth + this.gutter*col.index + "px";
+
     var top = col.height + topGutter + "px";
 
     if(this.useTransform){
